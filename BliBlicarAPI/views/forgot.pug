@@ -1,0 +1,13 @@
+html
+  head
+    title Lembrar senha
+    link(rel='stylesheet' href='/stylesheets/style.css')
+  body
+    h2 Lembrar senha
+    form( action="/forgot" method="POST" )
+      p Digite o email de cadastro abaixo para receber novas credenciais de acesso:
+        input( name="email" type="text"  placeholder="E-mail")
+      p
+        button(type = "Submit") Enviar
+    p Caso não possua cadastro 
+      a( href="users/signup" ) clique aqui
