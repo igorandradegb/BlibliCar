@@ -1,9 +1,9 @@
 {
-  "name": "bliblicarfrontend-master",
+  "name": "bliblicar-front",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
-  "productName": "Quasar App",
-  "author": "",
+  "description": "Aluguel é conosco!",
+  "productName": "BliBliCar",
+  "author": "Igor",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "axios": "^0.20.0",
     "core-js": "^3.6.5",
     "quasar": "^1.0.0"
   },

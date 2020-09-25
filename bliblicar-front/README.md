@@ -1,6 +1,6 @@
-# Quasar App (bliblicarfrontend-master)
+# BliBliCar (bliblicar-front)
 
-A Quasar Framework app
+Aluguel é conosco!
 
 ## Install the dependencies
 ```bash
