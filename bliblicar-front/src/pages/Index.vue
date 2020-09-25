@@ -1,21 +1,37 @@
 <template>
   <q-page>
-    <div style="text-align: center">
-      <div>
+    <div>
+      <div style="padding-right: 20px;padding-left: 20px; text-align: center">
         <h3>Seja bem vindo ao BliBliCar, <br>a sua agência de aluguel de carros!</h3>
         <h4>Escolha um carro para alugar abaixo!</h4>
-        <div class="row" style="padding-right: 60px;padding-left: 60px">
-          <div class="col-2"></div>
-          <div class="col-8">
+        <div class="row">
+          <div class="col-12">
             <q-table
               :data="cars"
               :columns="filters.identifiers.selected"
               row-key="idcar"
               :rows-per-page-options="[10, 20, 30, 40, 50, 100]"
             >
-              <q-td slot="body-cell-idcar" slot-scope="props" :props="props">
-                <div >{{props.value}}</div>
-              </q-td>
+              <tr slot="header" slot-scope="props">
+                <q-th key="motorist" :props="props">
+                  Dono
+                </q-th>
+                <q-th key="marca" :props="props">
+                  Marca
+                </q-th>
+                <q-th key="modelo" :props="props">
+                  Modelo
+                </q-th>
+                <q-th key="ano" :props="props">
+                  Ano
+                </q-th>
+                <q-th key="placa" :props="props">
+                  Placa
+                </q-th>
+                <q-th key="actions" :props="props">
+                  Ações
+                </q-th>
+              </tr>
               <q-td slot="body-cell-marca" slot-scope="props" :props="props">
                 <div >{{props.value}}</div>
               </q-td>
@@ -31,8 +47,7 @@
               <q-td slot="body-cell-motorist" slot-scope="props" :props="props">
                 <div >{{props.value}}</div>
               </q-td>
-              <q-td slot="body-cell-actions" slot-scope="props" :props="props"
-                    style="min-width: 140px; max-width: 140px; padding: 0 22px">
+              <q-td slot="body-cell-actions" slot-scope="props" :props="props" style="min-width: 140px; max-width: 140px; padding: 0 22px">
                 <div class="row gutter-xs justify-end animate-fade q-table-display">
                   <div>
                     <q-btn color="primary" flat label="Escolher" @click="$router.push('/obrigado')">
@@ -42,7 +57,6 @@
               </q-td>
             </q-table>
           </div>
-          <div class="col-2"></div>
         </div>
       </div>
     </div>
@@ -112,7 +126,7 @@ export default {
             {
               name: 'actions',
               field: 'actions',
-              align: 'left',
+              align: 'right',
               label: 'Ações',
               required: true
             }

@@ -1,9 +1,9 @@
 <template>
-  <q-page>
+  <q-layout view="hHh Lpr lff">
     <div>
       <div>
-        <h3 style="padding-right: 60px;padding-left: 20px">Seja bem vindo Admin</h3>
-        <div class="row" style="padding-right: 60px;padding-left: 20px">
+        <h3 style="padding-right: 20px;padding-left: 20px; text-align: center">Seja bem vindo, Admin</h3>
+        <div class="row" style="padding-right: 20px;padding-left: 20px">
           <div class="col-12">
             <q-table
               :data="cars"
@@ -12,24 +12,22 @@
               :rows-per-page-options="[10, 20, 30, 40, 50, 100]"
             >
               <q-td slot="body-cell-idcar" slot-scope="props" :props="props">
-                <div >{{props.value}}</div>
+                <div>{{ props.value }}</div>
               </q-td>
               <q-td slot="body-cell-marca" slot-scope="props" :props="props">
-                <div >{{props.value}}</div>
+                <div>{{ props.value }}</div>
               </q-td>
               <q-td slot="body-cell-modelo" slot-scope="props" :props="props">
-                <div >{{props.value}}</div>
+                <div>{{ props.value }}</div>
               </q-td>
               <q-td slot="body-cell-ano" slot-scope="props" :props="props">
-                <div >{{props.value}}</div>
+                <div>{{ props.value }}</div>
               </q-td>
               <q-td slot="body-cell-placa" slot-scope="props" :props="props">
-                <div class="text-grey-6">
-                  <div >{{props.value}}</div>
-                </div>
+                <div>{{ props.value }}</div>
               </q-td>
               <q-td slot="body-cell-motorist" slot-scope="props" :props="props">
-                <div >{{props.value}}</div>
+                <div>{{ props.value }}</div>
               </q-td>
               <q-td slot="body-cell-actions" slot-scope="props" :props="props"
                     style="min-width: 140px; max-width: 140px; padding: 0 22px">
@@ -47,18 +45,24 @@
         </div>
       </div>
     </div>
+
     <q-drawer
       v-model="rightDrawer.open"
       :width="300"
-      :breakpoint="200"
-      elevated
+      side="right"
+      bordered
     >
       <div>
-        <q-input style="padding: 10px" v-model="rightDrawer.edit.motorist" filled label="Qual seu nome?" />
-        <q-input style="padding: 10px" :disable="!rightDrawer.edit.motorist" filled v-model="rightDrawer.edit.marca" label="Escolha sua marca"/>
-        <q-input style="padding: 10px" :disable="!rightDrawer.edit.marca" filled mask="####" v-model="rightDrawer.edit.ano" label="Ano" placeholder="Digite o ano modelo do seu carro"/>
-        <q-input style="padding: 10px" :disable="!rightDrawer.edit.ano" filled v-model="rightDrawer.edit.modelo" label="Escolha seu modelo"/>
-        <q-input style="padding: 10px" :disable="!rightDrawer.edit.modelo" filled mask="XXX-XXXX" v-model="rightDrawer.edit.placa" label="Placa" placeholder="Digite a placa do seu carro"/>
+        <h4 style="padding-left: 10px">Editar registro</h4>
+        <q-input style="padding: 10px" v-model="rightDrawer.edit.motorist" filled label="Qual o nome?"/>
+        <q-input style="padding: 10px" :disable="!rightDrawer.edit.motorist" filled v-model="rightDrawer.edit.marca"
+                 label="Escolha sua marca"/>
+        <q-input style="padding: 10px" :disable="!rightDrawer.edit.marca" filled mask="####"
+                 v-model="rightDrawer.edit.ano" label="Ano" placeholder="Digite o ano modelo do carro"/>
+        <q-input style="padding: 10px" :disable="!rightDrawer.edit.ano" filled v-model="rightDrawer.edit.modelo"
+                 label="Escolha seu modelo"/>
+        <q-input style="padding: 10px" :disable="!rightDrawer.edit.modelo" filled mask="XXX-XXXX"
+                 v-model="rightDrawer.edit.placa" label="Placa" placeholder="Digite a placa do carro"/>
         <div class="row gutter-xs justify-end animate-fade q-table-display">
           <div>
             <q-btn color="primary" flat label="Fechar" @click="closeRightDrawer">
@@ -69,8 +73,7 @@
         </div>
       </div>
     </q-drawer>
-
-  </q-page>
+  </q-layout>
 </template>
 <script>
 import axios from 'axios'
@@ -137,7 +140,7 @@ export default {
             {
               name: 'actions',
               field: 'actions',
-              align: 'left',
+              align: 'center',
               label: 'Ações',
               required: true
             }
@@ -146,13 +149,13 @@ export default {
       },
       rightDrawer: {
         open: false,
-        isLoading: false,
         edit: {}
       }
     }
   },
   async mounted () {
     try {
+      this.rightDrawer.open = false
       this.read()
     } catch (e) {
       throw new Error(e)
